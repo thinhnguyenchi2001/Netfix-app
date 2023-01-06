@@ -1,0 +1,43 @@
+.register-footer {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  background-color: rgb(18, 18, 18);
+  padding: 3rem 0;
+
+  .footer-details {
+    max-width: 900px;
+    margin: 0 auto;
+    color: grey;
+    .register-footer-title {
+      text-align: left;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-question-list {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      justify-content: start;
+      align-items: center;
+      padding: 0;
+      row-gap: 0.8rem;
+
+      .footer-question-item {
+        width: 25%;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+    }
+
+    .footer-language-picker {
+      text-align: left;
+      margin-top: 2rem;
+    }
+    .register-footer-subtitle {
+      text-align: left;
+      margin-top: 2rem;
+    }
+  }
+}

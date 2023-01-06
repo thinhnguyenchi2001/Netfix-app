@@ -1,0 +1,22 @@
+.genres-page {
+  min-height: 100vh;
+  .list-genres {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+
+    .genre-item {
+      width: calc(100% / 5);
+    }
+  }
+
+  .no-data {
+    position: relative;
+    background-color: black;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

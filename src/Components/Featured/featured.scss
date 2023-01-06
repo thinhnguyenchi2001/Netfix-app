@@ -1,0 +1,128 @@
+.featured {
+  position: relative;
+  height: 800px;
+
+  .genre-title {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    font-size: 2.6rem;
+    z-index: 10;
+    text-shadow: rgb(0 0 0 / 30%) 1.95px 1.95px 2.6px;
+
+    a {
+      font-size: 1.4rem;
+      text-decoration: none;
+      color: rgb(214, 212, 212);
+      padding-right: 0.8rem;
+      text-shadow: rgb(0 0 0 / 30%) 1.95px 1.95px 2.6px;
+    }
+  }
+
+  .category {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+
+    select {
+      cursor: pointer;
+      background-color: var(--main-color);
+      border: 1px solid white;
+      color: white;
+      margin-left: 20px;
+      padding: 5px;
+
+      option {
+        color: black;
+      }
+    }
+  }
+
+  .genre-title {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+  }
+
+  .trending-img {
+    // position: absolute;
+    width: 100%;
+    height: 980px;
+    z-index: -1;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    position: absolute;
+    left: 5%;
+    top: 60%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      font-size: 2rem;
+      text-shadow: rgb(0 0 0 / 30%) 1.95px 1.95px 2.6px;
+    }
+
+    .desc {
+      margin: 30px 0px;
+      font-size: 20px;
+    }
+
+    .buttons {
+      display: flex;
+
+      button {
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: all 0.1s;
+
+        &.play {
+          background-color: white;
+          color: black;
+
+          &:hover {
+            opacity: 70%;
+          }
+        }
+
+        &.more {
+          background-color: gray;
+          color: white;
+
+          &:hover {
+            opacity: 70%;
+          }
+        }
+
+        span {
+          font-size: 16px;
+          margin-left: 5px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

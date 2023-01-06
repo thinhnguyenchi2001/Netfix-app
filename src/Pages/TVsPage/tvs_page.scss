@@ -1,0 +1,12 @@
+.tvs-page {
+  min-width: 100vh;
+  .list-tvs {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+
+    .tv-item {
+      width: 20%;
+    }
+  }
+}

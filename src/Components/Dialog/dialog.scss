@@ -1,0 +1,170 @@
+.overview {
+  padding: 0 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.group-icon-video {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  margin-bottom: 1rem;
+
+  .group-icon-support {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.rate {
+  color: grey;
+  text-align: left;
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+
+  span {
+    color: white;
+  }
+}
+
+.time {
+  text-align: left;
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+}
+
+.tag {
+  display: flex;
+  list-style: none;
+  padding: 0 0.5rem;
+  font-size: 0.6rem;
+  justify-content: start;
+  margin-top: 1rem;
+  color: grey;
+
+  span {
+    padding-right: 10px;
+  }
+}
+
+.dialog-card {
+  display: block;
+  width: 100%;
+  color: white;
+  padding-bottom: 2rem;
+
+  .title-card {
+    font-size: 1.6rem;
+  }
+
+  .group-icon-video {
+    font-size: 2rem;
+  }
+
+  .card-info {
+    padding: 1rem 0;
+    display: flex;
+    column-gap: 1.2rem;
+
+    .card-info-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+
+      .card-cast {
+        color: gray;
+        span {
+          font-size: 0.8rem;
+          color: white;
+        }
+      }
+
+      .card-genres {
+        color: gray;
+        span {
+          font-size: 0.8rem;
+          color: white;
+        }
+      }
+
+      .card-companies {
+        color: gray;
+        span {
+          font-size: 0.8rem;
+          color: white;
+        }
+      }
+    }
+
+    p {
+      flex: 2;
+    }
+  }
+  .similar-list-title {
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .similar-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .similar-item {
+      width: 50%;
+      padding: 1rem 0.5rem;
+
+      .similar-item-img {
+        img {
+          width: 100%;
+          border-radius: 4px;
+        }
+      }
+
+      .similar-item-title {
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+
+  .about-list-title {
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .card-cast {
+    color: gray;
+    span {
+      font-size: 0.8rem;
+      color: white;
+    }
+  }
+
+  .card-genres {
+    color: gray;
+    span {
+      font-size: 0.8rem;
+      color: white;
+    }
+  }
+
+  .card-companies {
+    color: gray;
+    span {
+      font-size: 0.8rem;
+      color: white;
+    }
+  }
+}

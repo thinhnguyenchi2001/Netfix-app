@@ -1,0 +1,12 @@
+.movies-page {
+  min-width: 100vh;
+  .list-movies {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+
+    .movie-item {
+      width: 20%;
+    }
+  }
+}

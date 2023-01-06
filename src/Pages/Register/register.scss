@@ -1,0 +1,261 @@
+.register-page {
+  position: relative;
+  z-index: 1;
+
+  .register-header-wrapper {
+    position: absolute;
+    width: 100%;
+    .register-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 2.5rem;
+      color: white;
+      // color: white;
+
+      .header-logo {
+        cursor: pointer;
+        img {
+          height: 100px;
+        }
+      }
+
+      .header-group-right {
+        display: flex;
+        column-gap: 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        .language-picker {
+          border: 1px solid white;
+          padding: 0.4rem 0.6rem;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+
+        .register-btn {
+          padding: 0.4rem 0.6rem;
+          background-color: red;
+          border-radius: 2px;
+          cursor: pointer;
+
+          a {
+            text-decoration: none;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .image-background {
+    position: absolute;
+    width: 100%;
+    z-index: -10;
+
+    img {
+      width: 100%;
+      height: 90vh;
+      object-fit: cover;
+    }
+  }
+  .register-body {
+    .body-hero {
+      background: rgba(0, 0, 0, 0.4);
+      background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.8) 0,
+        transparent 60%,
+        rgba(0, 0, 0, 0.8)
+      );
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 8px solid #222;
+      .body-hero-card {
+        max-width: 50%;
+        margin: 0 auto;
+        color: white;
+        .hero-card-title {
+          font-size: 4.4rem;
+          font-weight: 600;
+        }
+        .hero-card-subtitle {
+          font-size: 1.6rem;
+          font-weight: 500;
+          padding: 1rem 0;
+        }
+
+        .register-form {
+          .form-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+          }
+
+          .register-group-input {
+            display: flex;
+            margin: 2rem 8rem 0 8rem;
+
+            button {
+              flex: 1;
+              font-size: 1.2rem;
+              font-weight: 600;
+              background-color: red;
+              color: white;
+              border: none;
+              cursor: pointer;
+              padding: 1rem;
+              border-radius: 2px;
+            }
+          }
+        }
+      }
+    }
+
+    .body-story-card {
+      border-bottom: 8px solid #222;
+      background-color: black;
+      .story-card {
+        color: white;
+        max-width: 1000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 4rem 0;
+
+        .story-card-text {
+          flex: 1;
+
+          .story-card-title {
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: left;
+          }
+          .story-card-subtitle {
+            margin-top: 20px;
+            font-size: 1.4rem;
+            text-align: left;
+          }
+          .story-card-btn {
+            display: block;
+            background-color: transparent;
+            color: white;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            padding: 0;
+          }
+        }
+        .story-card-img {
+          flex: 1;
+          img {
+            max-width: 100%;
+            // height: 300px;
+          }
+        }
+      }
+    }
+
+    .body-question-card {
+      background-color: black;
+      color: white;
+      border-bottom: 8px solid #222;
+
+      .question-card-title {
+        font-size: 3rem;
+        font-weight: 600;
+        padding: 3.2rem 0 3rem 0;
+      }
+
+      .question-card-list {
+        padding: 0;
+        max-width: 850px;
+        margin: 0 auto;
+        list-style: none;
+
+        .question-card-item {
+          display: flex;
+          background-color: gray;
+          margin-bottom: 1rem;
+          padding: 1rem 1.6rem;
+          font-size: 1.6rem;
+          font-weight: 600;
+          justify-content: space-between;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+      }
+      .register-form {
+        padding: 2rem 0 5rem 0;
+        margin: 0 auto;
+        max-width: 900px;
+        .form-title {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+
+        .register-group-input {
+          display: flex;
+          margin: 2rem 5rem 0 5rem;
+          input {
+            flex: 3;
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 1rem 0 1rem 0.8rem;
+          }
+
+          button {
+            flex: 1;
+            font-size: 1.2rem;
+            font-weight: 600;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 1rem;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+
+  .register-footer {
+    background-color: black;
+    padding: 4rem 0;
+
+    .footer-details {
+      max-width: 900px;
+      margin: 0 auto;
+      color: grey;
+      .register-footer-title {
+        text-align: left;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+
+      .footer-question-list {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        justify-content: start;
+        align-items: center;
+        padding: 0;
+        row-gap: 0.8rem;
+
+        .footer-question-item {
+          width: 25%;
+          text-align: left;
+          font-size: 0.9rem;
+        }
+      }
+
+      .register-footer-subtitle {
+        text-align: left;
+        margin-top: 2rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

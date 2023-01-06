@@ -1,0 +1,70 @@
+.row {
+  background-color: black;
+  padding: 0 5%;
+  .list-title {
+    text-align: left;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0rem 0 1.4rem 0;
+    z-index: 1;
+    text-shadow: rgb(0 0 0 / 30%) 1.95px 1.95px 2.6px;
+  }
+
+  .list-items {
+    position: relative;
+    margin-bottom: 4rem;
+
+    .slick-list {
+      overflow: unset;
+    }
+
+    .arrows {
+      .button-pre {
+        position: absolute;
+        top: 0;
+        left: -5%;
+        height: 100%;
+        width: 50px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+
+        &:hover {
+          background-color: rgba($color: #e1dddd, $alpha: 0.1);
+          i {
+            padding: 2rem 0;
+          }
+          i:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .button-next {
+        position: absolute;
+        top: 0;
+        right: -5%;
+        height: 100%;
+        width: 50px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+
+        &:hover {
+          background-color: rgba($color: #e1dddd, $alpha: 0.1);
+          i {
+            padding: 2rem 0;
+          }
+          i:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}

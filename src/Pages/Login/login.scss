@@ -1,0 +1,175 @@
+.login-page {
+  position: relative;
+  z-index: 1;
+  .login-header-wrapper {
+    position: absolute;
+    width: 100%;
+    .login-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 2.5rem;
+      color: white;
+      // color: white;
+
+      .header-logo {
+        cursor: pointer;
+        img {
+          height: 100px;
+        }
+      }
+
+      .header-group-right {
+        display: flex;
+        column-gap: 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        .language-picker {
+          border: 1px solid white;
+          padding: 0.4rem 0.6rem;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+
+        .login-btn {
+          padding: 0.4rem 0.6rem;
+          background-color: red;
+          border-radius: 2px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .image-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    img {
+      width: 100%;
+      height: 100%;
+      //   min-height: 95vh;
+      object-fit: cover;
+    }
+  }
+
+  .login-body {
+    padding: 4rem 0 6rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+
+    form {
+      max-width: 450px;
+      min-height: 600px;
+      color: white;
+      background-color: rgba($color: #000000, $alpha: 0.8);
+
+      padding: 4rem;
+      margin: 2rem;
+      border-radius: 10px;
+
+      .login-form-title {
+        font-size: 2.2rem;
+        font-weight: 600;
+        text-align: left;
+        padding-bottom: 1rem;
+      }
+
+      .login-email-or-phone {
+        display: block;
+        width: 100%;
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 6px;
+        border: none;
+        font-size: 1rem;
+      }
+      .login-password {
+        display: block;
+        width: 100%;
+        margin: 1.2rem 0;
+        padding: 1rem;
+        border-radius: 6px;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .login-btn {
+        display: block;
+        width: 100%;
+        margin: 2.5rem 0 1rem 0;
+        padding: 1rem;
+        border-radius: 6px;
+        border: none;
+        background-color: red;
+        color: white;
+        font-size: 1rem;
+      }
+      .group-login-support {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .login-to-register {
+        margin-top: 4rem;
+        font-size: 1rem;
+        text-align: left;
+        a {
+          font-size: 1.2rem;
+        }
+      }
+
+      > p {
+        text-align: left;
+        font-size: 0.8rem;
+        padding: 1rem 0 2rem 0;
+      }
+    }
+  }
+
+  .login-footer {
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    padding: 4rem 0;
+
+    .footer-details {
+      max-width: 900px;
+      margin: 0 auto;
+      color: grey;
+      .login-footer-title {
+        text-align: left;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+
+      .footer-question-list {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        justify-content: start;
+        align-items: center;
+        padding: 0;
+        row-gap: 0.8rem;
+
+        .footer-question-item {
+          width: 25%;
+          text-align: left;
+          font-size: 0.9rem;
+        }
+      }
+
+      .footer-language-picker {
+        text-align: left;
+        margin-top: 2rem;
+      }
+      .login-footer-subtitle {
+        text-align: left;
+        margin-top: 2rem;
+      }
+    }
+  }
+}

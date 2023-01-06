@@ -1,0 +1,43 @@
+.search-page {
+  padding-top: 6rem;
+  min-height: 100vh;
+
+  .row {
+    .searchpage-title {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      color: rgb(255, 255, 255);
+      padding-bottom: 8rem;
+      font-size: 3rem;
+      z-index: 10;
+
+      a {
+        font-size: 1.4rem;
+        text-decoration: none;
+        color: rgb(214, 212, 212);
+        padding-right: 0.8rem;
+      }
+    }
+
+    .list-search {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 3rem;
+
+      .genre-item {
+        width: calc(100% / 5);
+      }
+    }
+
+    .no-data {
+      position: relative;
+      background-color: black;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

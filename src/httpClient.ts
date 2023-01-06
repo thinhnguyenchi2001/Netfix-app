@@ -1,0 +1,25 @@
+import axios from "axios";
+
+const getToken = () => {
+  const token = localStorage.getItem("userToken");
+  const bearer = token ? `Bearer ${token}` : "";
+
+  return bearer;
+};
+
+export const httpClient = axios.create({
+  baseURL: "https://api.themoviedb.org/3",
+  timeout: 10000,
+  headers: {
+    Authorization: getToken(),
+    "Content-Type": "application/json;charset=utf-8",
+  },
+  params: {
+    api_key: "85b8f8fbb0481197657035bf84174e27",
+  },
+});
+
+httpClient.interceptors.request.use((config: any) => {
+  config.headers.Authorization = getToken();
+  return config;
+});
