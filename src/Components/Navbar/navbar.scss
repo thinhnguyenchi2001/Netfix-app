@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    height: 5rem;
 
     .left {
       display: flex;
@@ -42,6 +42,10 @@
 
         &:hover {
           opacity: 70%;
+        }
+
+        @media only screen and (max-width: 992px) {
+          display: none;
         }
       }
     }

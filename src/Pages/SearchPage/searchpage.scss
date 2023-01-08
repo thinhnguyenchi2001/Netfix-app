@@ -1,6 +1,7 @@
 .search-page {
   padding-top: 6rem;
   min-height: 100vh;
+  min-width: 100vw;
 
   .row {
     .searchpage-title {
@@ -27,6 +28,15 @@
 
       .genre-item {
         width: calc(100% / 5);
+        @media only screen and (max-width: 992px) {
+          width: calc(100% / 4);
+        }
+        @media only screen and (max-width: 768px) {
+          width: calc(100% / 3);
+        }
+        @media only screen and (max-width: 600px) {
+          width: calc(100% / 2);
+        }
       }
     }
 

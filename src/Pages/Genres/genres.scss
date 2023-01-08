@@ -1,5 +1,6 @@
 .genres-page {
   min-height: 100vh;
+  min-width: 100vw;
   .list-genres {
     display: flex;
     flex-wrap: wrap;
@@ -7,6 +8,15 @@
 
     .genre-item {
       width: calc(100% / 5);
+      @media only screen and (max-width: 992px) {
+        width: calc(100% / 4);
+      }
+      @media only screen and (max-width: 768px) {
+        width: calc(100% / 3);
+      }
+      @media only screen and (max-width: 600px) {
+        width: calc(100% / 2);
+      }
     }
   }
 

@@ -16,10 +16,27 @@ export const SearchPage = () => {
   const input = params.input;
   const [page, setPage] = useState(1);
 
-  // const renderPage = () => {
+  const [skeletonList, setSkeletonList] = useState([]);
 
-  //
-  // };
+  const changeSkeleton = () => {
+    if (window.innerWidth <= 992 && window.innerWidth > 768) {
+      setSkeletonList(new Array(4).fill());
+    } else if (window.innerWidth <= 768 && window.innerWidth > 600) {
+      setSkeletonList(new Array(3).fill());
+    } else if (window.innerWidth <= 600) {
+      setSkeletonList(new Array(2).fill());
+    } else {
+      setSkeletonList(new Array(5).fill());
+    }
+  };
+  useEffect(() => {
+    changeSkeleton();
+  });
+
+  useEffect(() => {
+    window.addEventListener("resize", changeSkeleton);
+    return () => window.removeEventListener("resize", changeSkeleton);
+  }, []);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -70,67 +87,23 @@ export const SearchPage = () => {
                   marginBottom: "3rem",
                 }}
               >
-                <Box style={{ flex: 1, borderRadius: "4px" }}>
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    variant="rectangular"
-                    height={160}
-                  />
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    height={30}
-                    width="100%"
-                  />
-                </Box>
-                <Box style={{ flex: 1, borderRadius: "4px" }}>
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    variant="rectangular"
-                    height={160}
-                  />
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    height={30}
-                    width="100%"
-                  />
-                </Box>
-                <Box style={{ flex: 1, borderRadius: "4px" }}>
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    variant="rectangular"
-                    height={160}
-                  />
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    height={30}
-                    width="100%"
-                  />
-                </Box>
-                <Box style={{ flex: 1, borderRadius: "4px" }}>
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    variant="rectangular"
-                    height={160}
-                  />
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    height={30}
-                    width="100%"
-                  />
-                </Box>
-
-                <Box style={{ flex: 1, borderRadius: "4px" }}>
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    variant="rectangular"
-                    height={160}
-                  />
-                  <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
-                    height={30}
-                    width="100%"
-                  />
-                </Box>
+                {skeletonList.map((e, index) => (
+                  <Box
+                    key={index + "search-page"}
+                    style={{ flex: 1, borderRadius: "4px" }}
+                  >
+                    <Skeleton
+                      sx={{ bgcolor: "grey.900" }}
+                      variant="rectangular"
+                      height={160}
+                    />
+                    <Skeleton
+                      sx={{ bgcolor: "grey.900" }}
+                      height={30}
+                      width="100%"
+                    />
+                  </Box>
+                ))}
               </div>
             )
           }

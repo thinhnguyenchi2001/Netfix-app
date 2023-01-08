@@ -1,6 +1,6 @@
 import "./navbar.scss";
 // import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchAppBar from "../SearchAppBar";
@@ -14,6 +14,13 @@ function Navbar() {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
+
+  // useEffect(() => {
+  //   window.addEventListener("wheel", () => {
+  //     document.querySelector(".container").style.backgroundColor =
+  //       "rgb(0 0 0 / 60%)";
+  //   });
+  // });
 
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>

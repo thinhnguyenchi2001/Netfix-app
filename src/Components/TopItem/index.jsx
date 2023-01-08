@@ -54,8 +54,8 @@ export const TopItem = ({ data, index }) => {
           {videoTvData?.key || videoMovieData?.key ? (
             <ReactPlayer
               playing={isPlaying}
-              width="300px"
-              height="140px"
+              width="100%"
+              height="100%"
               url={`https://www.youtube.com/watch?v=${
                 videoTvData?.key || videoMovieData?.key
               }`}

@@ -19,16 +19,19 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 2; /* number of lines to show */
-      line-clamp: 2;
+      -webkit-line-clamp: 1; /* number of lines to show */
+      line-clamp: 1;
       -webkit-box-orient: vertical;
     }
   }
 
   .trailer {
+    position: absolute;
+    width: calc(100% + 2rem);
     display: none;
     padding-bottom: 1rem;
     box-shadow: rgba(221, 221, 221, 0.16) 0px 1px 4px;
+    top: -60%;
   }
   @keyframes zoom {
     from {
@@ -41,8 +44,6 @@
   &:hover .trailer {
     display: block;
     position: absolute;
-    top: -50%;
-    left: 5%;
     background-color: black;
     color: white;
     z-index: 10;

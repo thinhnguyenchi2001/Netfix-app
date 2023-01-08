@@ -141,7 +141,7 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
               <ReactPlayer
                 playing={true}
                 width="100%"
-                height="400px"
+                height="20rem"
                 url={`https://www.youtube.com/watch?v=${
                   videoTvData?.key || videoMovieData?.key
                 }`}
