@@ -65,46 +65,66 @@
         font-size: 30px;
       }
 
-      .notifucations {
-        font-size: 30px;
-        margin: 0 12px 0 15px;
-      }
-
-      .icon {
-        margin: 0px 6px;
-        cursor: pointer;
-      }
-
-      img {
-        width: 32px;
-        height: 32px;
-        border-radius: 5px;
-        object-fit: cover;
-        cursor: pointer;
-      }
-
-      .profile {
-        .options {
+      .avatar {
+        display: block;
+        @media only screen and (max-width: 992px) {
           display: none;
-          background-color: var(--main-color);
-          border-radius: 5px;
-          margin-top: 1rem;
-        }
-
-        span {
-          padding: 10px;
-          cursor: pointer;
         }
       }
-      &:hover .options {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        right: 0;
-        top: 100%;
-        background-color: white;
-        color: black;
-        // z-index: 100;
+
+      // .notifucations {
+      //   font-size: 30px;
+      //   margin: 0 12px 0 15px;
+      // }
+
+      // .icon {
+      //   margin: 0px 6px;
+      //   cursor: pointer;
+      // }
+
+      // img {
+      //   width: 32px;
+      //   height: 32px;
+      //   border-radius: 5px;
+      //   object-fit: cover;
+      //   cursor: pointer;
+      // }
+
+      // .profile {
+      //   .options {
+      //     display: none;
+      //     background-color: var(--main-color);
+      //     border-radius: 5px;
+      //     margin-top: 1rem;
+      //   }
+
+      //   span {
+      //     padding: 10px;
+      //     cursor: pointer;
+      //   }
+      // }
+      // &:hover .options {
+      //   position: absolute;
+      //   display: flex;
+      //   flex-direction: column;
+      //   right: 0;
+      //   top: 100%;
+      //   background-color: white;
+      //   color: black;
+      //   // z-index: 100;
+      // }
+      .get-start {
+        display: block;
+        @media only screen and (max-width: 992px) {
+          display: none;
+        }
+      }
+
+      .menu-icon {
+        display: none;
+        @media only screen and (max-width: 992px) {
+          display: block;
+        }
       }
     }
   }

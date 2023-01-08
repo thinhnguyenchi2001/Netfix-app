@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import SearchAppBar from "../SearchAppBar";
 import ScrollDialog from "../Dialog";
 import ResponsiveAppBar from "../Avtar";
+import AccountMenu from "../Menu";
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const nameUser = useSelector((state) => state.app.user?.name);
@@ -42,22 +43,22 @@ function Navbar() {
           <span>
             <Link to="/TVs">TV Shows</Link>
           </span>
-          <span>New {"&"} Popular</span>
+          {/* <span>New {"&"} Popular</span>
           <span>Homepage</span>
-          <span>My List</span>
+          <span>My List</span> */}
         </div>
         <div className="right">
           <SearchAppBar />
           {/* <Search className="search" /> */}
           {/* <Notifications className="notifucations" /> */}
           {user ? (
-            <div>
+            <div className="avatar">
               {" "}
               <ResponsiveAppBar />
             </div>
           ) : (
             <>
-              <div>
+              <div className="get-start">
                 <Link to="/register">Get Started</Link>
               </div>
               {/* <div>
@@ -65,6 +66,9 @@ function Navbar() {
               </div> */}
             </>
           )}
+          <div className="menu-icon">
+            <AccountMenu />
+          </div>
         </div>
       </div>
     </div>
