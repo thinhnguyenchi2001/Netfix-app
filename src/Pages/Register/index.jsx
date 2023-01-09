@@ -10,47 +10,22 @@ import { useEffect, useState } from "react";
 import { httpClient } from "../../httpClient.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setCurrentUser, setSessin_id } from "../../Store/index";
+import PositionedSnackbar from "../../Components/SnackBar";
 
 // import { fetchTVs, fetchMovies } from "../../API";
 // import { useEffect } from "react";
 
 export const Register = () => {
-  const navigate = useNavigate();
-  const userToken = useSelector((state) => state.app.token);
+  const [reload, setReaload] = useState(false);
   const dispatch = useDispatch();
 
-  const Confirm = () => {
+  useEffect(() => {
     httpClient.get("authentication/token/new").then((response) => {
       localStorage.setItem("userToken", response.data.request_token);
       dispatch(setToken(response.data.request_token));
     });
+  }, [reload]);
 
-    userToken &&
-      window.open(`https://www.themoviedb.org/authenticate/${userToken}`);
-
-    if (
-      window.confirm("Please authenticate the user for authorization !") == true
-    ) {
-      httpClient
-        .post("/authentication/session/new", {
-          request_token: userToken,
-        })
-        .then((response) => {
-          dispatch(setSessin_id(response.data.session_id));
-          navigate("/");
-        })
-        .catch(() => alert("Can not login !"));
-    } else {
-      window.reload();
-    }
-  };
-
-  // useEffect(() => {}, []);
-
-  const LoginAccount = (e) => {
-    e.preventDefault();
-    Confirm();
-  };
   return (
     <div className="register-page">
       <div className="register-header-wrapper">
@@ -79,15 +54,23 @@ export const Register = () => {
             <div className="hero-card-subtitle">
               Watch anywhere. Cancel anytime.
             </div>
-            <form className="register-form" action="">
+            <div className="register-form" action="">
               <div className="form-title">
                 Ready to watch? Enter your email to create or restart your
                 membership.
               </div>
               <div className="register-group-input">
-                <button onClick={(e) => LoginAccount(e)}>Get Started</button>
+                <button>
+                  <PositionedSnackbar title={"Get Started"} />
+                </button>
               </div>
-            </form>
+              <div className="reload-token">
+                Resend temporary request token if request session expires
+                <span onClick={() => setReaload(!reload)}>
+                  <PositionedSnackbar title={"Send"} />
+                </span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="body-story-card">
@@ -184,15 +167,23 @@ export const Register = () => {
               Is Netflix good for kids?<span>+</span>
             </li>
           </ul>
-          <form className="register-form" action="">
-            <h3 className="form-title">
+          <div className="register-form" action="">
+            <div className="form-title">
               Ready to watch? Enter your email to create or restart your
               membership.
-            </h3>
-            <div className="register-group-input">
-              <button>Get Stared</button>
             </div>
-          </form>
+            <div className="register-group-input">
+              <button>
+                <PositionedSnackbar title={"Get Started"} />
+              </button>
+            </div>
+            <div className="reload-token">
+              Resend temporary request token if request session expires
+              <span onClick={() => setReaload(!reload)}>
+                <PositionedSnackbar title={"Send"} />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       {/* <div className="register-footer">
