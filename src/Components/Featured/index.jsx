@@ -37,7 +37,7 @@ function Featured({ type, category, genreId }) {
     <div className="featured">
       {category && (
         <div className="category">
-          <span>Movies</span>
+          <span> {type === "movie" ? "Movies" : "TV Shows"}</span>
           <select onChange={(e) => SelectGenres(e)} name="genres">
             {genres.map((genre) => (
               <option key={genre.id} value={genre.id}>

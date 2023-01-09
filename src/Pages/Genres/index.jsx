@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { Item } from "../../Components/Item";
-import { fetchMovieByGenre, fetchMovielist, fetchTVlist } from "../../API";
+import {
+  fetchMovieByGenre,
+  fetchMovielist,
+  fetchTVlist,
+  fetchTVByGenre,
+} from "../../API";
 import { useParams } from "react-router-dom";
 import "./genres.scss";
 import Navbar from "../../Components/Navbar";
@@ -15,7 +20,6 @@ export const Genres = () => {
   const params = useParams();
   const genreId = params.id;
   const type = params.type;
-  const [genres, setGenres] = useState([]);
   const [page, setPage] = useState(1);
 
   const [skeletonList, setSkeletonList] = useState([]);
@@ -42,30 +46,25 @@ export const Genres = () => {
   }, []);
 
   useEffect(() => {
-    const fetchAPI = async () => {
-      const data = await fetchMovieByGenre(genreId, page);
-      setData((pre) => [...pre, ...data]);
-    };
-    fetchAPI();
+    if (type === "movie") {
+      const fetchAPI = async () => {
+        const data = await fetchMovieByGenre(genreId, page);
+        setData((pre) => [...pre, ...data]);
+      };
+      fetchAPI();
+    }
+    if (type === "tv") {
+      const fetchAPI = async () => {
+        const data = await fetchTVByGenre(genreId, page);
+        setData((pre) => [...pre, ...data]);
+      };
+      fetchAPI();
+    }
   }, [page]);
 
   const fetchData = () => {
     setTimeout(() => setPage(page + 1), 2500);
   };
-
-  useEffect(() => {
-    if (type === "movie") {
-      const fetchAPI = async () => {
-        setGenres(await fetchMovielist());
-      };
-      fetchAPI();
-    } else if (type === "tv") {
-      const fetchAPI = async () => {
-        setGenres(await fetchTVlist());
-      };
-      fetchAPI();
-    }
-  }, []);
 
   return (
     <div className="genres-page">

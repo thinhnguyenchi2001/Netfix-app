@@ -19,6 +19,8 @@ import {
   fetchSimilarTV,
   fetchRecommendationsTV,
 } from "../../API";
+import { httpClient } from "../../httpClient";
+import { useSelector } from "react-redux";
 
 export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
   const [open, setOpen] = useState(false);
@@ -27,6 +29,7 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
   const [detail, setDetail] = useState(null);
   const [similarMovie, setSimilarMovie] = useState([]);
   const [recomMovie, setRecomMovie] = useState([]);
+  const userId = useSelector((state) => state.app.user?.id);
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -46,6 +49,18 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
       }
     }
   }, [open]);
+
+  const MaskFavorite = () => {
+    httpClient.post(
+      `
+    https://api.themoviedb.org/3/account/${userId}/favorite?api_key=`,
+      {
+        media_type: "movie",
+        media_id: 550,
+        favorite: true,
+      }
+    );
+  };
 
   useEffect(() => {
     if (data.type === "movie") {

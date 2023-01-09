@@ -11,6 +11,7 @@ const movieUrl = `${url}/movie`;
 const tvUrl = `${url}/tv`;
 const genreUrl = `${url}/genre/movie/list`;
 const moviesUrl = `${url}/discover/movie`;
+const tvsUrl = `${url}/discover/tv`;
 const personUrl = `${url}/trending/person/week`;
 const tvPopularUrl = `${url}/tv/popular`;
 const moviePopularUrl = `${url}/movie/popular`;
@@ -60,6 +61,7 @@ export const fetchTrendingTVs = async () => {
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
+      type: "tv",
     }));
 
     return modifiedData;
@@ -86,6 +88,7 @@ export const fetchTVsPopular = async (page) => {
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
+      type: "tv",
     }));
 
     return modifiedData;
@@ -165,6 +168,7 @@ export const fetchTvsNowPlaying = async (page) => {
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
+      type: "tv",
     }));
 
     return modifiedData;
@@ -214,6 +218,32 @@ export const fetchMovieByGenre = async (genre_id, page) => {
     return modifiedData;
   } catch (error) {}
 };
+export const fetchTVByGenre = async (genre_id, page) => {
+  try {
+    const { data } = await axios.get(tvsUrl, {
+      params: {
+        api_key: apiKey,
+        language: "en_US",
+        page: page,
+        with_genres: genre_id,
+      },
+    });
+    const posterUrl = "https://image.tmdb.org/t/p/original/";
+    const modifiedData = data["results"].map((m) => ({
+      id: m["id"],
+      backPoster: posterUrl + m["backdrop_path"],
+      popularity: m["popularith"],
+      title: m["title"],
+      poster: posterUrl + m["poster_path"],
+      overview: m["overview"],
+      rating: m["vote_average"],
+      date: m["release_date"],
+      type: "tv",
+    }));
+
+    return modifiedData;
+  } catch (error) {}
+};
 
 export const fetchMovieBySearch = async (input, page) => {
   try {
@@ -234,12 +264,12 @@ export const fetchMovieBySearch = async (input, page) => {
       id: m["id"],
       backPoster: posterUrl + m["backdrop_path"],
       popularity: m["popularith"],
-      title: m["title"],
+      title: m["title"] || m["name"],
       poster: posterUrl + m["poster_path"],
       overview: m["overview"],
       rating: m["vote_average"],
-      date: m["release_date"],
-      type: "movie",
+      date: m["release_date"] || m["first_air_date"],
+      type: m["media_type"],
     }));
 
     return modifiedData;
@@ -309,6 +339,7 @@ export const fetchTopratedTv = async (page) => {
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
+      type: "tv",
     }));
 
     return modifiedData;
