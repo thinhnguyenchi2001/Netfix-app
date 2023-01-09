@@ -63,8 +63,8 @@ export const Item = ({ data }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "300px",
-                height: "140px",
+                width: "100%",
+                height: "8rem",
               }}
             >
               No data
