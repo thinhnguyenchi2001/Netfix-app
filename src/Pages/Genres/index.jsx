@@ -85,7 +85,7 @@ export const Genres = () => {
           next={fetchData}
           hasMore={true}
           loader={
-            data?.length > 0 && (
+            data?.length >= 20 && (
               <div
                 style={{
                   display: "flex",

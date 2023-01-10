@@ -15,6 +15,7 @@ import { TVsPage } from "./Pages/TVsPage";
 import { SearchPage } from "./Pages/SearchPage";
 import { Footer } from "./Components/Footer";
 import { FavoritePage } from "./Pages/FavoritePage";
+import { WatchPage } from "./Pages/WatchPage";
 
 function App() {
   const sessionId = useSelector((state) => state.app.session_id);
@@ -66,10 +67,14 @@ function App() {
           path: "/movies",
           element: <MoviesPage />,
         },
-        // {
-        //   path: "/favorite",
-        //   element: <FavoritePage />,
-        // },
+        {
+          path: "/favorite",
+          element: <FavoritePage />,
+        },
+        {
+          path: "/watch",
+          element: <WatchPage />,
+        },
       ],
     },
   ]);

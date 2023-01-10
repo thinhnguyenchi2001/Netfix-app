@@ -73,6 +73,7 @@ export const Item = ({ data }) => {
         <div className="trailer">
           {videoTvData?.key || videoMovieData?.key ? (
             <ReactPlayer
+              loop={true}
               playing={isPlaying}
               width="100%"
               height="100%"

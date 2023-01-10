@@ -5,13 +5,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { fetchMoviesNowPlaying } from "../../API";
 import { Item } from "../../Components/Item";
-import "./favorite_page.scss";
+import "./watch_page.scss";
 import Skeleton from "@mui/material/Skeleton";
 import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
 import { httpClient } from "../../httpClient";
 
-export const FavoritePage = () => {
+export const WatchPage = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [moviesData, setMoviesData] = useState([]);
@@ -27,7 +27,7 @@ export const FavoritePage = () => {
 
   const getDataFavorite = () => {
     httpClient
-      .get(`/account/${user?.id}/favorite/movies`, {
+      .get(`/account/${user?.id}/watchlist/movies`, {
         params: {
           page: page,
           language: "en-US",
@@ -53,7 +53,7 @@ export const FavoritePage = () => {
       );
 
     httpClient
-      .get(`/account/${user?.id}/favorite/tv`, {
+      .get(`/account/${user?.id}/watchlist/tv`, {
         params: {
           page: page,
           language: "en-US",
@@ -112,10 +112,10 @@ export const FavoritePage = () => {
   return (
     <div className="movies-page">
       <Navbar />
-      <Featured type="movie" category={false} />
+      <Featured type="tv" category={false} />
 
       <div className="row">
-        <div className="list-title">Favorite list</div>
+        <div className="list-title">Watch list</div>
         <div className="list-movies">
           {/* {data.slice(0, 20).map((e) => (
             <div className="movie-item" key={e.id}>

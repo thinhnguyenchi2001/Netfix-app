@@ -35,6 +35,12 @@ function Navbar() {
           <span>
             <Link to="/tv">TV Shows</Link>
           </span>
+          <span>
+            <Link to="/favorite">Favorite list</Link>
+          </span>
+          <span>
+            <Link to="/watch">Watch List</Link>
+          </span>
         </div>
         <div className="right">
           <SearchAppBar />

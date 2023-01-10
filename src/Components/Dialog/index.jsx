@@ -196,6 +196,7 @@ export default function ScrollDialog({
           >
             <div className="dialog-card">
               <ReactPlayer
+                loop={true}
                 playing={true}
                 width="100%"
                 height="20rem"
