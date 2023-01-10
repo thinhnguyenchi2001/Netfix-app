@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import ReactPlayer from "react-player/lazy";
 import { fetchMovieVideos, fetchTvVideos } from "../../API";
 import ScrollDialog from "../Dialog";
+import { httpClient } from "../../httpClient";
+import { useSelector } from "react-redux";
 
 import "./topitem.scss";
 export const TopItem = ({ data, index }) => {
@@ -9,6 +11,31 @@ export const TopItem = ({ data, index }) => {
   const [videoTvData, setVideoTvData] = useState([]);
   const [videoMovieData, setVideoMovieData] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const sessionId = useSelector((state) => state.app.session_id);
+  const [accountStates, setAccountStates] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const GetAccountStates = () => {
+    if (data.type === "tv") {
+      httpClient
+        .get(`/tv/${data.id}/account_states`, {
+          params: {
+            session_id: sessionId,
+          },
+        })
+        .then((response) => setAccountStates(response.data));
+    }
+
+    if (data.type === "movie") {
+      httpClient
+        .get(`/movie/${data.id}/account_states`, {
+          params: {
+            session_id: sessionId,
+          },
+        })
+        .then((response) => setAccountStates(response.data));
+    }
+  };
 
   useEffect(() => {
     if (data.type === "movie") {
@@ -23,7 +50,8 @@ export const TopItem = ({ data, index }) => {
       };
       fetchAPITv();
     }
-  }, []);
+    sessionId && GetAccountStates();
+  }, [isHovered, loading]);
 
   return (
     <div
@@ -80,6 +108,9 @@ export const TopItem = ({ data, index }) => {
           )}
 
           <ScrollDialog
+            loading={loading}
+            setLoading={setLoading}
+            accountStates={accountStates}
             data={data}
             videoMovieData={videoMovieData}
             videoTvData={videoTvData}

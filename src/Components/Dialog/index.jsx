@@ -9,6 +9,7 @@ import "./dialog.scss";
 import Tooltip from "@mui/material/Tooltip";
 import ReactPlayer from "react-player/lazy";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   fetchCastsMovie,
   fetchMovieDetail,
@@ -20,17 +21,21 @@ import {
   fetchRecommendationsTV,
 } from "../../API";
 import { httpClient } from "../../httpClient";
-import { useSelector } from "react-redux";
 
-export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
+export default function ScrollDialog({
+  data,
+  videoMovieData,
+  videoTvData,
+  accountStates,
+  setLoading,
+  loading,
+}) {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
   const [casts, setCasts] = useState([]);
   const [detail, setDetail] = useState(null);
   const [similarMovie, setSimilarMovie] = useState([]);
   const [recomMovie, setRecomMovie] = useState([]);
-  const [accountStates, setAccountStates] = useState([]);
-  const [loading, setLoading] = useState(false);
   const user = useSelector((state) => state.app.user);
   const sessionId = useSelector((state) => state.app.session_id);
 
@@ -52,28 +57,6 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
       }
     }
   }, [open]);
-
-  const GetAccountStates = () => {
-    if (data.type === "tv") {
-      httpClient
-        .get(`/tv/${data.id}/account_states`, {
-          params: {
-            session_id: sessionId,
-          },
-        })
-        .then((response) => setAccountStates(response.data));
-    }
-
-    if (data.type === "movie") {
-      httpClient
-        .get(`/movie/${data.id}/account_states`, {
-          params: {
-            session_id: sessionId,
-          },
-        })
-        .then((response) => setAccountStates(response.data));
-    }
-  };
 
   const MaskFavorite = () => {
     httpClient
@@ -131,9 +114,7 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
 
       fetchAPIMovie();
     }
-
-    GetAccountStates();
-  }, [loading]);
+  }, []);
 
   return (
     <div>
@@ -147,7 +128,7 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
               <div
                 onClick={(e) => {
                   e.stopPropagation();
-                  MaskWatchList();
+                  user && MaskWatchList();
                 }}
               >
                 {accountStates?.watchlist ? (
@@ -161,7 +142,7 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
               <div
                 onClick={(e) => {
                   e.stopPropagation();
-                  MaskFavorite();
+                  user && MaskFavorite();
                 }}
               >
                 {accountStates?.favorite ? (
@@ -240,7 +221,7 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
                       style={{ cursor: "pointer" }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        MaskWatchList();
+                        user && MaskWatchList();
                       }}
                     >
                       {accountStates?.watchlist ? (
@@ -255,7 +236,7 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
                       style={{ cursor: "pointer" }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        MaskFavorite();
+                        user && MaskFavorite();
                       }}
                     >
                       {accountStates?.favorite ? (
