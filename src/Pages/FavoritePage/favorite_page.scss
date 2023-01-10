@@ -1,0 +1,22 @@
+.movies-page {
+  min-width: 100vw;
+  .list-movies {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+
+    .movie-item {
+      width: 20%;
+
+      @media only screen and (max-width: 992px) {
+        width: calc(100% / 4);
+      }
+      @media only screen and (max-width: 768px) {
+        width: calc(100% / 3);
+      }
+      @media only screen and (max-width: 600px) {
+        width: calc(100% / 2);
+      }
+    }
+  }
+}

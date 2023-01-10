@@ -436,6 +436,7 @@ export const fetchCastsMovie = async (id) => {
       character: c["character"],
       name: c["name"],
       img: "https://image.tmdb.org/t/p/w200" + c["profile_path"],
+      media: c["media"],
     }));
 
     return modifiedData;
@@ -454,6 +455,7 @@ export const fetchCastsTV = async (id) => {
       character: c["character"],
       name: c["name"],
       img: "https://image.tmdb.org/t/p/w200" + c["profile_path"],
+      media: c["media"],
     }));
 
     return modifiedData;

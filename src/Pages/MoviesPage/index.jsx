@@ -33,7 +33,7 @@ export const MoviesPage = () => {
 
   useEffect(() => {
     changeSkeleton();
-  });
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", changeSkeleton, { passive: true });

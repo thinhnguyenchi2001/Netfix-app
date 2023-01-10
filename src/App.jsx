@@ -14,6 +14,7 @@ import { MoviesPage } from "./Pages/MoviesPage";
 import { TVsPage } from "./Pages/TVsPage";
 import { SearchPage } from "./Pages/SearchPage";
 import { Footer } from "./Components/Footer";
+import { FavoritePage } from "./Pages/FavoritePage";
 
 function App() {
   const sessionId = useSelector((state) => state.app.session_id);
@@ -58,13 +59,17 @@ function App() {
           element: <SearchPage />,
         },
         {
-          path: "/TVs",
+          path: "/tv",
           element: <TVsPage />,
         },
         {
-          path: "/Movies",
+          path: "/movies",
           element: <MoviesPage />,
         },
+        // {
+        //   path: "/favorite",
+        //   element: <FavoritePage />,
+        // },
       ],
     },
   ]);

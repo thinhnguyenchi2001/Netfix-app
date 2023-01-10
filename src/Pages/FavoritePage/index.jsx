@@ -1,17 +1,47 @@
 import Featured from "../../Components/Featured";
 import Navbar from "../../Components/Navbar";
 import TopList from "../../Components/TopList";
-import { useEffect, useState } from "react";
-import { fetchTvsNowPlaying } from "../../API";
-import { Item } from "../../Components/Item";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useEffect, useState } from "react";
+import { fetchMoviesNowPlaying } from "../../API";
+import { Item } from "../../Components/Item";
+import "./favorite_page.scss";
 import Skeleton from "@mui/material/Skeleton";
 import Box from "@mui/material/Box";
+import { useSelector } from "react-redux";
+import { httpClient } from "../../httpClient";
 
-import "./tvs_page.scss";
-export const TVsPage = () => {
+export const FavoritePage = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const [moviesData, setMoviesData] = useState([]);
+  const [tvData, setTVData] = useState([]);
+  const sessionId = useSelector((state) => state.app.session_id);
+  const user = useSelector((state) => state.app.user);
+
+  useEffect(() => {
+    httpClient
+      .get(`/account/${user?.id}/favorite/movies`, {
+        params: {
+          language: "en-US",
+          session_id: sessionId,
+        },
+      })
+      .then((response) => setMoviesData(response.data.results));
+
+    httpClient
+      .get(`/account/${user?.id}/favorite/tv`, {
+        params: {
+          language: "en-US",
+          session_id: sessionId,
+        },
+      })
+      .then((response) => setTVData(response.data.results));
+  });
+
+  const fetchData = () => {
+    setTimeout(() => setPage(page + 1), 2500);
+  };
 
   const [skeletonList, setSkeletonList] = useState([]);
 
@@ -26,34 +56,37 @@ export const TVsPage = () => {
       setSkeletonList(new Array(5).fill());
     }
   };
+
   useEffect(() => {
     changeSkeleton();
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", changeSkeleton);
+    window.addEventListener("resize", changeSkeleton, { passive: true });
     return () => window.removeEventListener("resize", changeSkeleton);
   }, []);
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const data = await fetchTvsNowPlaying(page);
+      const data = tvData.concat(moviesData);
       setData((pre) => [...pre, ...data]);
     };
     fetchAPI();
   }, [page]);
 
-  const fetchData = () => {
-    setTimeout(() => setPage(page + 1), 2500);
-  };
   return (
-    <div className="tvs-page">
+    <div className="movies-page">
       <Navbar />
-      <Featured type="tv" category={true} />
-      <TopList type="tv" />
+      <Featured type="movie" category={true} />
+      <TopList type="movie" />
       <div className="row">
-        <div className="list-title">TV Shows</div>
-        <div className="list-tvs">
+        <div className="list-title">Movies</div>
+        <div className="list-movies">
+          {/* {data.slice(0, 20).map((e) => (
+            <div className="movie-item" key={e.id}>
+              <Item data={e} />
+            </div>
+          ))} */}
           <InfiniteScroll
             style={{
               display: "flex",
@@ -65,7 +98,7 @@ export const TVsPage = () => {
             next={fetchData}
             hasMore={true}
             loader={
-              data.length > 0 && (
+              data.length >= 20 && (
                 <div
                   style={{
                     display: "flex",
@@ -76,7 +109,7 @@ export const TVsPage = () => {
                 >
                   {skeletonList.map((e, index) => (
                     <Box
-                      key={index + "tv-page"}
+                      key={index + "movie-page"}
                       style={{ flex: 1, borderRadius: "4px" }}
                     >
                       <Skeleton
@@ -100,8 +133,8 @@ export const TVsPage = () => {
               </div>
             }
           >
-            {data?.map((e) => (
-              <div className="tv-item" key={e.id}>
+            {data?.map((e, index) => (
+              <div className="movie-item" key={e.id + index}>
                 <Item data={e} />
               </div>
             ))}

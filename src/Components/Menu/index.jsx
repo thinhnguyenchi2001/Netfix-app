@@ -110,7 +110,7 @@ export default function AccountMenu() {
         </MenuItem>
 
         <MenuItem>
-          <Link style={{ textDecoration: "none", color: "black" }} to="/tvs">
+          <Link style={{ textDecoration: "none", color: "black" }} to="/tv">
             <ListItemIcon>
               <LiveTvIcon fontSize="small" />
             </ListItemIcon>

@@ -29,7 +29,10 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
   const [detail, setDetail] = useState(null);
   const [similarMovie, setSimilarMovie] = useState([]);
   const [recomMovie, setRecomMovie] = useState([]);
-  const userId = useSelector((state) => state.app.user?.id);
+  const [accountStates, setAccountStates] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.app.user);
+  const sessionId = useSelector((state) => state.app.session_id);
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -50,16 +53,62 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
     }
   }, [open]);
 
+  const GetAccountStates = () => {
+    if (data.type === "tv") {
+      httpClient
+        .get(`/tv/${data.id}/account_states`, {
+          params: {
+            session_id: sessionId,
+          },
+        })
+        .then((response) => setAccountStates(response.data));
+    }
+
+    if (data.type === "movie") {
+      httpClient
+        .get(`/movie/${data.id}/account_states`, {
+          params: {
+            session_id: sessionId,
+          },
+        })
+        .then((response) => setAccountStates(response.data));
+    }
+  };
+
   const MaskFavorite = () => {
-    httpClient.post(
-      `
-    https://api.themoviedb.org/3/account/${userId}/favorite?api_key=`,
-      {
-        media_type: "movie",
-        media_id: 550,
-        favorite: true,
-      }
-    );
+    httpClient
+      .post(
+        `/account/${user?.id}/favorite`,
+        {
+          media_type: data?.type,
+          media_id: data?.id,
+          favorite: !accountStates?.favorite,
+        },
+        {
+          params: {
+            session_id: sessionId,
+          },
+        }
+      )
+      .then(() => setLoading(!loading));
+  };
+
+  const MaskWatchList = () => {
+    httpClient
+      .post(
+        `/account/${user?.id}/watchlist`,
+        {
+          media_type: data?.type,
+          media_id: data?.id,
+          watchlist: !accountStates?.watchlist,
+        },
+        {
+          params: {
+            session_id: sessionId,
+          },
+        }
+      )
+      .then(() => setLoading(!loading));
   };
 
   useEffect(() => {
@@ -82,7 +131,9 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
 
       fetchAPIMovie();
     }
-  }, []);
+
+    GetAccountStates();
+  }, [loading]);
 
   return (
     <div>
@@ -92,22 +143,32 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
             <div>
               <i className="fa-regular fa-circle-play"></i>
             </div>
-            <Tooltip title="Login to add list" arrow>
+            <Tooltip title={user ? "" : "Login to add list"} arrow>
               <div
                 onClick={(e) => {
                   e.stopPropagation();
+                  MaskWatchList();
                 }}
               >
-                <i className="fa-regular fa-square-plus"></i>
+                {accountStates?.watchlist ? (
+                  <i class="fa-solid fa-square-plus"></i>
+                ) : (
+                  <i className="fa-regular fa-square-plus"></i>
+                )}
               </div>
             </Tooltip>
-            <Tooltip title="Login to favorite" arrow>
+            <Tooltip title={user ? "" : "Login to favorite"} arrow>
               <div
                 onClick={(e) => {
                   e.stopPropagation();
+                  MaskFavorite();
                 }}
               >
-                <i className="fa-regular fa-thumbs-up"></i>
+                {accountStates?.favorite ? (
+                  <i className="fa-solid fa-thumbs-up"></i>
+                ) : (
+                  <i className="fa-regular fa-thumbs-up"></i>
+                )}
               </div>
             </Tooltip>
           </div>
@@ -174,22 +235,34 @@ export default function ScrollDialog({ data, videoMovieData, videoTvData }) {
                   <div>
                     <i className="fa-regular fa-circle-play"></i>
                   </div>
-                  <Tooltip title="Login to add list" arrow>
+                  <Tooltip title={user ? "" : "Login to add list"} arrow>
                     <div
+                      style={{ cursor: "pointer" }}
                       onClick={(e) => {
                         e.stopPropagation();
+                        MaskWatchList();
                       }}
                     >
-                      <i className="fa-regular fa-square-plus"></i>
+                      {accountStates?.watchlist ? (
+                        <i class="fa-solid fa-square-plus"></i>
+                      ) : (
+                        <i className="fa-regular fa-square-plus"></i>
+                      )}
                     </div>
                   </Tooltip>
-                  <Tooltip title="Login to favorite" arrow>
+                  <Tooltip title={user ? "" : "Login to favorite"} arrow>
                     <div
+                      style={{ cursor: "pointer" }}
                       onClick={(e) => {
                         e.stopPropagation();
+                        MaskFavorite();
                       }}
                     >
-                      <i className="fa-regular fa-thumbs-up"></i>
+                      {accountStates?.favorite ? (
+                        <i className="fa-solid fa-thumbs-up"></i>
+                      ) : (
+                        <i className="fa-regular fa-thumbs-up"></i>
+                      )}
                     </div>
                   </Tooltip>
                 </div>

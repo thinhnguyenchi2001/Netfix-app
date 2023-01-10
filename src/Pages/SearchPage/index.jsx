@@ -31,7 +31,7 @@ export const SearchPage = () => {
   };
   useEffect(() => {
     changeSkeleton();
-  });
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", changeSkeleton);

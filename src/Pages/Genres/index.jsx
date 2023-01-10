@@ -38,7 +38,7 @@ export const Genres = () => {
 
   useEffect(() => {
     changeSkeleton();
-  });
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", changeSkeleton);

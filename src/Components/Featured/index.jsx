@@ -51,7 +51,7 @@ function Featured({ type, category, genreId }) {
       {genreId && (
         <div className="genre-title">
           {" "}
-          <Link to={type === "movie" ? `/movies` : "/tvs"}>
+          <Link to={type === "movie" ? `/movies` : "/tv"}>
             {type === "movie" ? "Movies" : "TV Shows"} {">"}
           </Link>{" "}
           {genres?.find((element) => element.id == genreId)?.name}

@@ -38,10 +38,10 @@ function Navbar() {
           </span>
 
           <span>
-            <Link to="/Movies">Movies</Link>
+            <Link to="/movies">Movies</Link>
           </span>
           <span>
-            <Link to="/TVs">TV Shows</Link>
+            <Link to="/tv">TV Shows</Link>
           </span>
           {/* <span>New {"&"} Popular</span>
           <span>Homepage</span>
