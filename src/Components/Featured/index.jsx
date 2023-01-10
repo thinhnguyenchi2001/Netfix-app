@@ -59,7 +59,7 @@ function Featured({ type, category, genreId }) {
       )}
 
       <div className="trending-img">
-        {trendingData && <img src={trendingData[0]?.backPoster} alt="" />}
+        {trendingData && <img src={trendingData[0]?.backPoster || ""} alt="" />}
       </div>
       <div className="info">
         {trendingData && <div className="title">{trendingData[0]?.title}</div>}

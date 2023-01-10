@@ -66,7 +66,7 @@ export const Item = ({ data }) => {
       }}
     >
       <div className="card">
-        {<img className="card-img" src={data.backPoster} alt="" />}
+        {<img className="card-img" src={data.backPoster || ""} alt="" />}
         <p>{data.title}</p>
       </div>
       {isHovered && (

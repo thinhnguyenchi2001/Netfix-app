@@ -74,11 +74,11 @@ export const SearchPage = () => {
             rowGap: "4rem",
             overflow: "unset",
           }}
-          dataLength={data.length} //This is important field to render the next data
+          dataLength={data?.length} //This is important field to render the next data
           next={fetchData}
           hasMore={true}
           loader={
-            data.length >= 20 && (
+            data?.length >= 20 && (
               <div
                 style={{
                   display: "flex",

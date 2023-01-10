@@ -69,19 +69,11 @@ export const Genres = () => {
   return (
     <div className="genres-page">
       <Navbar />
-      {data.length > 0 && (
+      {data?.length > 0 && (
         <Featured genreId={genreId} type={type} category={false} />
       )}
 
       <div className="row">
-        {/* <div className="genre-title">
-          {" "}
-          <Link to={type === "movie" ? `/movies` : "/tvs"}>
-            {type === "movie" ? "Movies" : "TV Shows"} {">"}
-          </Link>{" "}
-          {genres?.find((element) => element.id == genreId)?.name}
-        </div> */}
-
         <InfiniteScroll
           style={{
             display: "flex",
@@ -89,11 +81,11 @@ export const Genres = () => {
             rowGap: "4rem",
             overflow: "unset",
           }}
-          dataLength={data.length} //This is important field to render the next data
+          dataLength={data?.length} //This is important field to render the next data
           next={fetchData}
           hasMore={true}
           loader={
-            data.length > 0 && (
+            data?.length > 0 && (
               <div
                 style={{
                   display: "flex",
@@ -128,7 +120,7 @@ export const Genres = () => {
             </div>
           }
         >
-          {data.length > 0 ? (
+          {data?.length > 0 ? (
             <div className="list-genres">
               {data?.map((e) => (
                 <div className="genre-item" key={e.id}>

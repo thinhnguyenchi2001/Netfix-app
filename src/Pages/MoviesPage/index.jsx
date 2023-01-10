@@ -56,11 +56,6 @@ export const MoviesPage = () => {
       <div className="row">
         <div className="list-title">Movies</div>
         <div className="list-movies">
-          {/* {data.slice(0, 20).map((e) => (
-            <div className="movie-item" key={e.id}>
-              <Item data={e} />
-            </div>
-          ))} */}
           <InfiniteScroll
             style={{
               display: "flex",
@@ -68,11 +63,11 @@ export const MoviesPage = () => {
               rowGap: "4rem",
               overflow: "unset",
             }}
-            dataLength={data.length} //This is important field to render the next data
+            dataLength={data?.length} //This is important field to render the next data
             next={fetchData}
             hasMore={true}
             loader={
-              data.length >= 20 && (
+              data?.length >= 20 && (
                 <div
                   style={{
                     display: "flex",

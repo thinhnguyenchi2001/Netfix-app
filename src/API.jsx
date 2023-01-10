@@ -29,10 +29,10 @@ export const fetchTrendingMovies = async () => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -54,10 +54,10 @@ export const fetchTrendingTVs = async () => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["name"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
@@ -81,10 +81,10 @@ export const fetchTVsPopular = async (page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["name"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
@@ -107,10 +107,10 @@ export const fetchMoviesPopular = async (page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -134,10 +134,10 @@ export const fetchMoviesNowPlaying = async (page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -161,10 +161,10 @@ export const fetchTvsNowPlaying = async (page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["name"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
@@ -205,10 +205,10 @@ export const fetchMovieByGenre = async (genre_id, page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -231,10 +231,10 @@ export const fetchTVByGenre = async (genre_id, page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -262,10 +262,10 @@ export const fetchMovieBySearch = async (input, page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"] || m["name"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"] || m["first_air_date"],
@@ -306,10 +306,10 @@ export const fetchTopratedMovie = async (page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -332,10 +332,10 @@ export const fetchTopratedTv = async (page) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["name"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["first_air_date"],
@@ -473,10 +473,10 @@ export const fetchSimilarMovie = async (id) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -497,10 +497,10 @@ export const fetchSimilarTV = async (id) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["name"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -521,10 +521,10 @@ export const fetchRecommendationsMovie = async (id) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["title"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],
@@ -545,10 +545,10 @@ export const fetchRecommendationsTV = async (id) => {
     const posterUrl = "https://image.tmdb.org/t/p/original/";
     const modifiedData = data["results"].map((m) => ({
       id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
+      backPoster: m["backdrop_path"] ? posterUrl + m["backdrop_path"] : "",
       popularity: m["popularith"],
       title: m["name"],
-      poster: posterUrl + m["poster_path"],
+      poster: m["poster_path"] ? posterUrl + m["poster_path"] : "",
       overview: m["overview"],
       rating: m["vote_average"],
       date: m["release_date"],

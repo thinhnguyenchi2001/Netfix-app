@@ -132,7 +132,7 @@ export default function ScrollDialog({
                 }}
               >
                 {accountStates?.watchlist ? (
-                  <i class="fa-solid fa-square-plus"></i>
+                  <i className="fa-solid fa-square-plus"></i>
                 ) : (
                   <i className="fa-regular fa-square-plus"></i>
                 )}
@@ -225,7 +225,7 @@ export default function ScrollDialog({
                       }}
                     >
                       {accountStates?.watchlist ? (
-                        <i class="fa-solid fa-square-plus"></i>
+                        <i className="fa-solid fa-square-plus"></i>
                       ) : (
                         <i className="fa-regular fa-square-plus"></i>
                       )}
@@ -291,7 +291,7 @@ export default function ScrollDialog({
                 {similarMovie?.slice(0, 6).map((e, index) => (
                   <div key={index + "similarMovie"} className="similar-item">
                     <div className="similar-item-img">
-                      <img src={e.backPoster} alt="" />
+                      <img src={e.backPoster || ""} alt="" />
                     </div>
                     <div className="similar-item-title">{e.title}</div>
                   </div>
@@ -304,7 +304,7 @@ export default function ScrollDialog({
                 {recomMovie?.slice(0, 6).map((e, index) => (
                   <div key={index + "recomMovie"} className="similar-item">
                     <div className="similar-item-img">
-                      <img src={e.backPoster} alt="" />
+                      <img src={e.backPoster || ""} alt="" />
                     </div>
                     <div className="similar-item-title">{e.title}</div>
                   </div>
